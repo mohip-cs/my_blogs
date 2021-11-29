@@ -1,8 +1,25 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
+const Header =  (siteTitle, propTypes) => {
+  const topMenu = useStaticQuery(graphql`    
+  query MyMenuQuery {
+    wpMenuItem {
+      menu {
+        node {
+          menuItems {
+            nodes {
+              label
+            }
+          }
+        }
+      }
+    }
+  }`)
+  const { wpMenuItem } = topMenu
+  console.log(wpMenuItem);
   <header
     style={{
       background: `rebeccapurple`,
@@ -37,7 +54,7 @@ const Header = ({ siteTitle }) => (
       </ul>
     </div>
   </header>
-)
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -48,3 +65,19 @@ Header.defaultProps = {
 }
 
 export default Header
+
+/* export const pageQuery = graphql`
+    {
+      wpMenuItem {
+        menu {
+          node {
+            menuItems {
+              nodes {
+                label
+              }
+            }
+          }
+        }
+      }
+    }
+` */

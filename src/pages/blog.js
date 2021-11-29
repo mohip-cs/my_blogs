@@ -8,7 +8,7 @@ import { Card } from 'antd';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-const indexPage = props => {
+const BlogPage = props => {
     console.log(props);
     const { 
         data: { allWpPost },
@@ -54,7 +54,7 @@ const indexPage = props => {
     )
 }
 
-export default indexPage
+export default BlogPage
 
 export const pageQuery = graphql`
     {
