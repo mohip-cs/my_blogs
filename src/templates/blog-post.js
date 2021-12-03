@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
+import Timeline from "../components/timeline"
 export default function BlogPost({ data }) {
   const post = data.allWpPost.edges[0].node
   console.log(post)
@@ -16,6 +17,7 @@ export default function BlogPost({ data }) {
               src={post.featuredImage.node.sourceUrl}/>
           }
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <Timeline Timeline={post.testTimeline} ></Timeline>
       </div>
     </Layout>
   )
@@ -35,6 +37,17 @@ export const query = graphql`
             }
             content
             slug
+            testTimeline {
+              myTimeline {
+                content
+                date
+                subTitle
+                title
+                image {
+                  sourceUrl
+                }
+              }
+            }
         }
       }
     }

@@ -9,16 +9,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const Homepage = props => {
-    console.log(props);
-    const { 
-        data: { allWpPage },
-    } = props;
+  const { 
+    data: { allWpPage },
+  } = props;
+  console.log(allWpPage);
     return (
 
         <Layout >
             <Seo title="Index" />
             <h1>{ allWpPage.nodes[0].title }</h1>
-            {/* <div> { allWpPage.nodes[0].content } </div> */}
+            
             
         </Layout>
 
